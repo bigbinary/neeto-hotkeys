@@ -10,6 +10,10 @@
     "**/*.{js,jsx,json}": [
       "prettier --write",
       "eslint --fix"
+    ],
+    ".eslint-rules/**/*": [
+      "prettier --write",
+      "eslint --fix"
     ]
   },
   "repository": {
