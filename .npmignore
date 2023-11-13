@@ -1,0 +1,16 @@
+# Development and build-related files
+node_modules/
+dist/
+.eslintignore
+.eslintrc.js
+.prettierignore
+.prettierrc
+babel.config.js
+webpack.config.js
+
+# Editor-specific files and directories
+.vscode/
+
+# Documentation and configuration files not needed for users
+README.md
+.editorconfig

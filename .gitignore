@@ -1,1 +1,70 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore node packages
 node_modules
+
+# Ignore master key for decrypting credentials and more
+/config/master.key
+
+#---------------------------------------#
+# IDEs & Editors Ignores                #
+#---------------------------------------#
+# Sublime Text
+*.sublime*
+.sublime-gulp.cache
+# JetBrains IDEs
+.idea/
+# VIM
+## Session
+Session.vim
+Sessionx.vim
+## Temporary
+.netrwhist
+## Backup and swap files
+*~
+## Auto-generated tag files
+/tags
+# Vscode
+.vscode-test
+
+#---------------------------------------#
+# Linux Ignores                         #
+#---------------------------------------#
+# directory preferences
+.directory
+
+#---------------------------------------#
+# OSX Ignores                           #
+#---------------------------------------#
+.DS_Store
+.AppleDouble
+.LSOverride
+.localized
+
+#---------------------------------------#
+# Windows Ignores                       #
+#---------------------------------------#
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+# Folder config file
+Desktop.ini
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+#---------------------------------------#
+# Tools and Package specific ignores    #
+#---------------------------------------#
+.eslintcache
+yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+.yarnrc
+yarn-1.22.5.cjs
+yarn-1.22.5.js
+
+/dist
