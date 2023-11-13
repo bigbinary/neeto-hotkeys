@@ -1,0 +1,19 @@
+{
+  "name": "neeto-hotkeys",
+  "version": "1.0.0",
+  "description": "React hook for handling keyboard shortcuts, offering a customizable and platform-aware solution, supporting global and scoped modes.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbinary/neeto-hotkeys.git"
+  },
+  "author": "Anmol Kumar <anmol.kumar@bigbinary.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bigbinary/neeto-hotkeys/issues"
+  },
+  "homepage": "https://github.com/bigbinary/neeto-hotkeys#readme"
+}
