@@ -1,0 +1,97 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": ".",
+    "paths": {
+      // Don't modify the below paths without consulting with neetoCompliance team
+      "assets": [
+        "src/assets"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "components": [
+        "src/components"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "hooks": [
+        "src/hooks"
+      ],
+      "hooks/*": [
+        "src/hooks/*"
+      ],
+      "translations": [
+        "src/translations"
+      ],
+      "translations/*": [
+        "src/translations/*"
+      ],
+      "utils": [
+        "src/utils"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ],
+      "src": [
+        "src"
+      ],
+      "src/*": [
+        "src/*"
+      ],
+      "neetoui": [
+        "node_modules/@bigbinary/neetoui"
+      ],
+      "neetoui/*": [
+        "node_modules/@bigbinary/neetoui/*"
+      ],
+      "neetocommons": [
+        "node_modules/@bigbinary/neeto-commons-frontend"
+      ],
+      "neetocommons/*": [
+        "node_modules/@bigbinary/neeto-commons-frontend/*"
+      ],
+      "neetoteam": [
+        "node_modules/@bigbinary/neeto-team-members-frontend"
+      ],
+      "neetofilters": [
+        "node_modules/@bigbinary/neeto-filters-frontend"
+      ],
+      "neetomolecules/*": [
+        "node_modules/@bigbinary/neeto-molecules/types/*"
+      ],
+      // You can add custom project specific paths below this comment
+      "common": [
+        "src/common"
+      ],
+      "common/*": [
+        "src/common/*"
+      ]
+    },
+    "pretty": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "checkJs": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "**/node_modules",
+    "**/.*/"
+  ],
+  "include": [
+    "./**/*.js",
+    "./**/*.jsx",
+    "./**/*.d.ts"
+  ]
+}
