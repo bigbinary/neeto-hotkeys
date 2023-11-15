@@ -57,6 +57,7 @@
     "prettier": "^3.1.0"
   },
   "peerDependencies": {
+    "@bigbinary/neeto-cist": "latest",
     "@bigbinary/neeto-commons-frontend": "latest"
   }
 }
