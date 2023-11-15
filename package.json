@@ -2,12 +2,18 @@
   "name": "@bigbinary/neeto-hotkeys",
   "version": "1.0.0",
   "description": "React hook for handling keyboard shortcuts, offering a customizable and platform-aware solution, supporting global and scoped modes.",
-  "main": "src/index.js",
   "scripts": {
     "prepare": "husky install"
   },
+  "engines": {
+    "node": ">=18.12"
+  },
   "lint-staged": {
-    "**/*.{js,jsx,json}": [
+    "src/**/*.{js,jsx,json}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "{package.json,.eslintrc.js,.prettierrc.js}": [
       "prettier --write",
       "eslint --fix"
     ],
@@ -30,6 +36,9 @@
     "@babel/eslint-parser": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
+    "@bigbinary/eslint-plugin-neeto": "^1.1.31",
+    "@bigbinary/neeto-cist": "^1.0.4",
+    "@bigbinary/neeto-commons-frontend": "^2.1.38",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
@@ -39,9 +48,15 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-sonarjs": "^0.23.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint-plugin-xss": "^0.1.12",
     "husky": "^8.0.0",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0"
+  },
+  "peerDependencies": {
+    "@bigbinary/neeto-commons-frontend": "latest"
   }
 }
