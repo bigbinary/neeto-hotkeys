@@ -13,12 +13,6 @@
     "baseUrl": ".",
     "paths": {
       // Don't modify the below paths without consulting with neetoCompliance team
-      "apis": [
-        "src/apis"
-      ],
-      "apis/*": [
-        "src/apis/*"
-      ],
       "assets": [
         "src/assets"
       ],
@@ -36,18 +30,6 @@
       ],
       "hooks/*": [
         "src/hooks/*"
-      ],
-      "reducers": [
-        "src/reducers"
-      ],
-      "reducers/*": [
-        "src/reducers/*"
-      ],
-      "routes": [
-        "src/routes"
-      ],
-      "routes/*": [
-        "src/routes/*"
       ],
       "translations": [
         "src/translations"
@@ -79,17 +61,8 @@
       "neetocommons/*": [
         "node_modules/@bigbinary/neeto-commons-frontend/*"
       ],
-      "neetoicons": [
-        "node_modules/@bigbinary/neeto-icons"
-      ],
-      "neetoicons/*": [
-        "node_modules/@bigbinary/neeto-icons/*"
-      ],
       "neetoteam": [
         "node_modules/@bigbinary/neeto-team-members-frontend"
-      ],
-      "neetoeditor": [
-        "node_modules/@bigbinary/neeto-editor"
       ],
       "neetofilters": [
         "node_modules/@bigbinary/neeto-filters-frontend"
