@@ -2,10 +2,15 @@
   "name": "@bigbinary/neeto-usehotkeys",
   "version": "1.0.0",
   "description": "React hook for handling keyboard shortcuts, offering a customizable and platform-aware solution, supporting global and scoped modes.",
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "export": "./dist/index.cjs.js"
+    }
+  },
   "scripts": {
     "prepare": "husky install",
-    "build": "NODE_ENV=production webpack --config webpack.config.js"
+    "build": "NODE_ENV=production rollup -c rollup.config.js --bundleConfigAsCjs"
   },
   "engines": {
     "node": ">=18.12",
@@ -51,6 +56,12 @@
     "@bigbinary/eslint-plugin-neeto": "^1.1.31",
     "@bigbinary/neeto-cist": "^1.0.4",
     "@bigbinary/neeto-commons-frontend": "^2.1.38",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@svgr/rollup": "^8.1.0",
     "babel-plugin-preval": "^5.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "eslint": "^8.53.0",
@@ -69,10 +80,24 @@
     "husky": "^8.0.0",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
+    "rollup": "^4.4.1",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-swc-preserve-directives": "^0.6.0",
     "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
+    "@bigbinary/neeto-commons-frontend": "latest",
     "@bigbinary/neeto-cist": "latest",
-    "@bigbinary/neeto-commons-frontend": "latest"
+    "mousetrap": "^1.6.5",
+    "mousetrap-global-bind": "^1.1.0",
+    "platform": "^1.3.6",
+    "ramda": "^0.29.1",
+    "react": "^18.2.0"
   }
 }

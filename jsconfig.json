@@ -92,6 +92,7 @@
   "include": [
     "./**/*.js",
     "./**/*.jsx",
-    "./**/*.d.ts"
+    "./**/*.d.ts",
+    "rollup.config.js"
   ]
 }
