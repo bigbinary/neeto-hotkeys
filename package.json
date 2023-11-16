@@ -2,7 +2,7 @@
   "name": "@bigbinary/neeto-usehotkeys",
   "version": "1.0.0",
   "description": "React hook for handling keyboard shortcuts, offering a customizable and platform-aware solution, supporting global and scoped modes.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepare": "husky install",
     "build": "NODE_ENV=production webpack --config webpack.config.js"
@@ -69,8 +69,6 @@
     "husky": "^8.0.0",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
     "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
