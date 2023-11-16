@@ -9,7 +9,6 @@ test
 tmp
 .vscode
 babel.config.js
-webpack.config.js
 dist
 .eslintrc.js
 .prettierrc.js
