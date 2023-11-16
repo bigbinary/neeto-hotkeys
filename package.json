@@ -54,10 +54,12 @@
     "eslint-plugin-xss": "^0.1.12",
     "husky": "^8.0.0",
     "lint-staged": "^15.1.0",
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.0",
+    "ramda": "^0.29.1"
   },
   "peerDependencies": {
     "@bigbinary/neeto-cist": "latest",
-    "@bigbinary/neeto-commons-frontend": "latest"
+    "@bigbinary/neeto-commons-frontend": "latest",
+    "ramda": "^0.29.1"
   }
 }
