@@ -1,6 +1,7 @@
 - Fixes #issue-number
 
 **Description**
+
 #### Checklist
 
 - [ ] I have made corresponding changes to the documentation.
