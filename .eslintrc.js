@@ -8,7 +8,6 @@ module.exports = mergeDeepLeft(
       "@bigbinary/neeto/no-missing-localization": "off",
       "@bigbinary/neeto/webpack-aliases-and-jsconfig-paths-should-be-in-sync":
         "off",
-      "@bigbinary/neeto/ensure-compact-objects": "off",
     },
   },
   defaultConfig
