@@ -5,7 +5,7 @@
 #### Checklist
 
 - [ ] I have made corresponding changes to the documentation.
-- [ ] I have verified the functionality in some of the neeto web-apps.
+- [ ] I have verified the functionality in a React application.
 - [ ] I have added the necessary label (patch/minor/major - If package publish
       is required).
 
