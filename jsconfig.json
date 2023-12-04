@@ -89,10 +89,5 @@
     "**/node_modules",
     "**/.*/"
   ],
-  "include": [
-    "./**/*.js",
-    "./**/*.jsx",
-    "./**/*.d.ts",
-    "rollup.config.js"
-  ]
+  "include": ["./**/*.js", "./**/*.jsx", "./**/*.d.ts"]
 }
