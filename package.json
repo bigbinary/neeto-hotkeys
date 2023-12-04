@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "build": "NODE_ENV=production rollup -c rollup.config.js --bundleConfigAsCjs"
+    "build": "NODE_ENV=production rollup -c --bundleConfigAsCjs"
   },
   "engines": {
     "node": ">=18.12",
@@ -67,7 +67,11 @@
     "eslint-plugin-xss": "^0.1.12",
     "husky": "^8.0.0",
     "lint-staged": "^15.1.0",
+    "mousetrap": "^1.6.5",
+    "mousetrap-global-bind": "^1.1.0",
+    "platform": "^1.3.6",
     "prettier": "^3.1.0",
+    "react": "^18.2.0",
     "rollup": "^4.4.1",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-babel": "^4.4.0",
@@ -80,11 +84,6 @@
     "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
-    "@bigbinary/neeto-cist": "latest",
-    "@bigbinary/neeto-commons-frontend": "latest",
-    "mousetrap": "^1.6.5",
-    "mousetrap-global-bind": "^1.1.0",
-    "platform": "^1.3.6",
     "ramda": "^0.29.1",
     "react": "^18.2.0"
   }

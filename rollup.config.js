@@ -3,7 +3,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import svgr from "@svgr/rollup";
 import analyze from "rollup-plugin-analyzer";
 import cleaner from "rollup-plugin-cleaner";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -22,8 +21,7 @@ const plugins = [
     preferBuiltins: true,
     extensions: [".js", ".jsx", ".svg"],
   }),
-  svgr(),
-  commonjs({ include: "node_module/" }),
+  commonjs(),
   json(),
   babel({ babelHelpers: "runtime" }),
   analyze({ summaryOnly: true }),
