@@ -2,10 +2,9 @@ import { DEFAULT_CONFIG, MODES } from "constants";
 
 import { useEffect, useRef } from "react";
 
-import Mousetrap from "mousetrap";
 import "mousetrap-global-bind";
 import { mergeLeft } from "ramda";
-import { convertHotkeyToUsersPlatform } from "utils";
+import { bindHotKey, convertHotkeyToUsersPlatform, unBindHotKey } from "utils";
 
 const useHotKeys = (hotkey, handler, userConfig) => {
   const ref = useRef(null);
@@ -37,27 +36,5 @@ const useHotKeys = (hotkey, handler, userConfig) => {
 
   return config.mode === MODES.scoped ? ref : null;
 };
-
-const bindHotKey = ({ mode, hotkey, handler, ref }) => {
-  let mousetrapInstance;
-
-  switch (mode) {
-    case MODES.global:
-      Mousetrap.bindGlobal(hotkey, handler);
-      break;
-    case MODES.scoped:
-      mousetrapInstance = Mousetrap(ref.current).bind(hotkey, handler);
-      break;
-    default:
-      mousetrapInstance = Mousetrap.bind(hotkey, handler);
-  }
-
-  return mousetrapInstance;
-};
-
-const unBindHotKey = ({ mousetrapInstance, mode, hotkey }) =>
-  mode === MODES.global
-    ? Mousetrap.unbindGlobal(hotkey)
-    : mousetrapInstance?.unbind(hotkey);
 
 export default useHotKeys;
