@@ -1,11 +1,11 @@
+import { DEFAULT_CONFIG, MODES } from "constants";
+
 import { useEffect, useRef } from "react";
 
 import Mousetrap from "mousetrap";
 import "mousetrap-global-bind";
 import { mergeLeft } from "ramda";
-
-import { DEFAULT_CONFIG, MODES } from "./constants";
-import { convertHotkeyToUsersPlatform } from "./utils";
+import { convertHotkeyToUsersPlatform } from "utils";
 
 const useHotKeys = (hotkey, handler, userConfig) => {
   const ref = useRef(null);
