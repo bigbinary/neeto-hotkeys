@@ -12,6 +12,5 @@ babel.config.js
 webpack.config.js
 dist
 rollup.config.js
-tailwind.config.js
 .eslintrc.js
 .prettierrc.js
