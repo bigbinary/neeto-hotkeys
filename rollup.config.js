@@ -1,6 +1,5 @@
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
-import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import analyze from "rollup-plugin-analyzer";
@@ -21,7 +20,6 @@ const plugins = [
     extensions: [".js", ".jsx", ".svg"],
   }),
   commonjs(),
-  json(),
   babel({ babelHelpers: "runtime" }),
   analyze({ summaryOnly: true }),
 ];
