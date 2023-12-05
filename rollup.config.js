@@ -4,52 +4,57 @@ import alias from "@rollup/plugin-alias";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
-import replace from "@rollup/plugin-replace";
 import analyze from "rollup-plugin-analyzer";
 import cleaner from "rollup-plugin-cleaner";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import { mergeDeepLeft } from "ramda";
+import { globSync } from "glob";
+import { keys } from "ramda";
 
-import packageJson from "./package.json";
+import packageJSON from "./package.json";
+const rootResolve = require("./resolve.js");
 
-const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/webpack/resolve.js");
-const projectResolve = require("./resolve.js");
-
-const formats = ["esm", "cjs"];
-const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
-const peerDependencies = Object.keys(packageJson.peerDependencies);
-
-const plugins = [
-  cleaner({ targets: [path.resolve(__dirname, "dist")] }),
-  // To automatically externalize peerDependencies in a rollup bundle.
-  peerDepsExternal(),
-  replace({
-    preventAssignment: true,
-  }),
-  resolve({
-    preferBuiltins: true,
-    extensions: [".js", ".jsx", ".svg"],
-  }),
-  commonjs({ sourceMap: true }),
-  alias({ entries: aliasEntries }),
-  babel({
-    babelHelpers: "runtime",
-    sourceMaps: true,
-  }),
-  analyze({ summaryOnly: true }),
-];
-
-const output = formats.map(format => ({
-  assetFileNames: "[name][extname]",
-  file: format === "esm" ? "dist/index.js" : "dist/index.cjs.js",
-  format,
-  name: "NeetoHotkeysNano",
-  sourcemap: true,
-}));
+const globals = Object.fromEntries(
+  keys(packageJSON.peerDependencies).map(lib => [lib, lib])
+);
 
 export default {
   input: "./src/index.js",
-  output,
-  external: peerDependencies,
-  plugins,
+  output: [
+    {
+      inlineDynamicImports: true,
+      file: `dist/index.cjs.js`,
+      format: "cjs",
+      sourcemap: true,
+      name: `neeto-hotkeys/index`,
+      globals,
+    },
+    {
+      inlineDynamicImports: true,
+      file: `dist/index.mjs`,
+      format: "esm",
+      sourcemap: true,
+      name: `neeto-hotkeys/index`,
+      globals,
+    },
+  ],
+  plugins: [
+    // To delete previously existing bundle.
+    cleaner({ targets: globSync(path.resolve(__dirname, `dist/index.*`)) }),
+    // To automatically externalize peerDependencies in a rollup bundle.
+    peerDepsExternal(),
+    // To use third party modules from node_modules
+    resolve({
+      extensions: [".js", ".jsx", ".svg"],
+    }),
+    commonjs({ sourceMap: true }),
+    // To define aliases when bundling packages.
+    alias({ entries: rootResolve.alias }),
+    // To integrate Rollup and Babel.
+    babel({
+      babelHelpers: "runtime",
+      sourceMaps: true,
+    }),
+    // Analyze created bundle.
+    analyze({ summaryOnly: true }),
+  ],
 };
