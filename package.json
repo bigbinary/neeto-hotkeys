@@ -4,7 +4,8 @@
   "description": "React hook for handling keyboard shortcuts, offering a customizable and platform-aware solution, supporting global and scoped modes.",
   "exports": {
     ".": {
-      "import": "./index.mjs"
+      "import": "./index.mjs",
+      "require": "./index.cjs.js"
     }
   },
   "scripts": {

@@ -22,6 +22,14 @@ export default {
   output: [
     {
       inlineDynamicImports: true,
+      file: `index.cjs.js`,
+      format: "cjs",
+      sourcemap: true,
+      name: `neeto-hotkeys/index`,
+      globals,
+    },
+    {
+      inlineDynamicImports: true,
       file: `index.mjs`,
       format: "esm",
       sourcemap: true,
