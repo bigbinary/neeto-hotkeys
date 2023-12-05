@@ -23,7 +23,7 @@ jobs:
         run: yarn build
 
       - name: Publish the package on NPM
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v3
         with:
           access: "public"
           token: ${{ secrets.NPM_TOKEN }}

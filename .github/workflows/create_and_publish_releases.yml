@@ -19,8 +19,8 @@ jobs:
 
       - name: Setup git user
         run: |
-          git config user.name "Anmol Kumar"
-          git config user.email "anmol.kumar@bigbinary.com"
+          git config user.name "Joseph Mathew"
+          git config user.email "joseph.mathew@bigbinary.com"
       - name: Setup NodeJS LTS version
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
         with:
