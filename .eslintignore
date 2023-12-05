@@ -11,6 +11,6 @@ tmp
 babel.config.js
 webpack.config.js
 dist
+rollup.config.js
 .eslintrc.js
 .prettierrc.js
-jsconfig.json
