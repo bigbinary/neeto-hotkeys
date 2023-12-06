@@ -1,4 +1,5 @@
 import Mousetrap from "mousetrap";
+import "mousetrap-global-bind";
 import platform from "platform";
 import { toPairs } from "ramda";
 
