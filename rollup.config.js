@@ -17,6 +17,8 @@ const globals = Object.fromEntries(
   keys(packageJSON.peerDependencies).map(lib => [lib, lib])
 );
 
+const buildFilesMatchPattern = 'index.{cjs.js,cjs.js.map,mjs,mjs.map}';
+
 export default {
   input: "./src/index.js",
   output: [
@@ -39,7 +41,7 @@ export default {
   ],
   plugins: [
     // To delete previously existing bundle.
-    cleaner({ targets: globSync(path.resolve(__dirname, `index.*`)) }),
+    cleaner({ targets: globSync(path.resolve(__dirname, buildFilesMatchPattern)) }),
     // To automatically externalize peerDependencies in a rollup bundle.
     peerDepsExternal(),
     // To use third party modules from node_modules

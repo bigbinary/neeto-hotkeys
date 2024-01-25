@@ -4,7 +4,7 @@ type ConfigType = {
   enabled?: boolean;
 };
 
-export function useHotKeys(
+export default function useHotkeys(
   hotkey: string | string[],
   handler: (event: React.KeyboardEvent) => void,
   config?: ConfigType
