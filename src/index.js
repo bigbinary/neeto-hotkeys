@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
 import { mergeLeft } from "ramda";
+
 import { DEFAULT_CONFIG, MODES } from "src/constants";
 import {
   bindHotKey,
