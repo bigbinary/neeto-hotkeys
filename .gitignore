@@ -117,7 +117,6 @@ yalc.lock
 /index.cjs.js.map
 /index.mjs
 /index.mjs.map
-/index.d.ts
 # Ignore bundler config
 /.bundle
 
@@ -232,9 +231,3 @@ dump.rdb
 # Ignore yalc generated files
 yalc.lock
 /.yalc
-
-/index.cjs.js
-/index.cjs.js.map
-/index.mjs
-/index.mjs.map
-/index.d.ts

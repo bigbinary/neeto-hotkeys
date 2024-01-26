@@ -17,12 +17,7 @@ export const MAC_TO_WINDOWS_KEYS_MAP = {
   delete: "backspace",
 };
 
-export const OS = {
-  mac: "OS X",
-  windows: "Windows",
-};
+// eslint-disable-next-line @bigbinary/neeto/hard-coded-strings-should-be-localized
+export const OS = { mac: "OS X", windows: "Windows" };
 
-export const KEY_NAMES = {
-  delete: "delete",
-  backspace: "backspace",
-};
+export const KEY_NAMES = { delete: "delete", backspace: "backspace" };
