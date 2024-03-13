@@ -24,7 +24,7 @@ export default {
   output: [
     {
       inlineDynamicImports: true,
-      file: `index.cjs.js`,
+      file: "dist/index.cjs.js",
       format: "cjs",
       sourcemap: true,
       name: `neeto-hotkeys/index`,
@@ -32,7 +32,7 @@ export default {
     },
     {
       inlineDynamicImports: true,
-      file: `index.mjs`,
+      file: "dist/index.mjs",
       format: "esm",
       sourcemap: true,
       name: `neeto-hotkeys/index`,
@@ -41,7 +41,7 @@ export default {
   ],
   plugins: [
     // To delete previously existing bundle.
-    cleaner({ targets: globSync(path.resolve(__dirname, buildFilesMatchPattern)) }),
+    cleaner({ targets: globSync(path.resolve(__dirname, "dist")) }),
     // To automatically externalize peerDependencies in a rollup bundle.
     peerDepsExternal(),
     // To use third party modules from node_modules
