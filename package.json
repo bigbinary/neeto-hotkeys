@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-hotkeys",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React hook for handling keyboard shortcuts, offering a customizable and platform-aware solution, supporting global and scoped modes.",
   "exports": {
     ".": {
@@ -87,9 +87,9 @@
     "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
-    "ramda": "^0.29.1",
-    "react": "^18.2.0",
     "@bigbinary/neeto-cist": "latest",
-    "@bigbinary/neeto-commons-frontend": "latest"
+    "@bigbinary/neeto-commons-frontend": "latest",
+    "ramda": "^0.29.1",
+    "react": "^18.2.0"
   }
 }
