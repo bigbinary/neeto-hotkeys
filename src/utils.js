@@ -7,10 +7,13 @@ import { MAC_TO_WINDOWS_KEYS_MAP, OS, KEY_NAMES, MODES } from "./constants";
 
 const isMultipleHotkey = Array.isArray;
 
-const replaceKeys = (hotkey, keyName, replaceWith) =>
-  isMultipleHotkey(hotkey)
-    ? hotkey.map(item => item.replaceAll(keyName, replaceWith))
-    : hotkey.replaceAll(keyName, replaceWith);
+const replaceKeys = (hotkey, keyName, replaceWith) => {
+  const keyNamePattern = new RegExp(keyName, "g");
+
+  return isMultipleHotkey(hotkey)
+    ? hotkey.map(item => item.replace(keyNamePattern, replaceWith))
+    : hotkey.replace(keyNamePattern, replaceWith);
+};
 
 const convertHotKeyToWindows = hotkey => {
   toPairs(MAC_TO_WINDOWS_KEYS_MAP).forEach(([macKey, windowsKey]) => {
