@@ -56,10 +56,7 @@ yarn add @bigbinary/neeto-hotkeys
   3.  enabled: By default its value will be `true`. Setting this to `false` will
       not register the hotkey.
 
-- `externalDocument`: This is an optional argument. If you want to listen to
-  hotkeys on an external document(eg: iframe) then you can pass the reference of
-  the document here. If this is not passed then the hook will listen to the
-  hotkeys on the current document only.
+- `externalDocument`: This is an optional argument. If you want to listen for hotkeys on an external document (e.g., an iframe), pass the reference of that document as the 4th argument for useHotKeys hook. If you do not provide this argument, the hook will listen for hotkeys on the current document by default.
 
 ### Return value:
 
