@@ -1,7 +1,7 @@
 # @bigbinary/neeto-hotkeys
 
-The `neeto-hotkeys` package provides the `useHotKeys` hook, a versatile utility for managing hotkeys in an application. 
-This hook allows you to define specific hotkey combinations and associate them with corresponding handler functions. 
+The `neeto-hotkeys` package provides the `useHotKeys` hook, a versatile utility for managing hotkeys in an application.
+This hook allows you to define specific hotkey combinations and associate them with corresponding handler functions.
 The associated handler is invoked upon pressing the configured hotkey(s), enabling you to execute actions in response to keyboard input.
 
 ## Installation
@@ -56,6 +56,11 @@ yarn add @bigbinary/neeto-hotkeys
   3.  enabled: By default its value will be `true`. Setting this to `false` will
       not register the hotkey.
 
+- `externalDocument`: This is an optional argument. If you want to listen to
+  hotkeys on an external document(eg: iframe) then you can pass the reference of
+  the document here. If this is not passed then the hook will listen to the
+  hotkeys on the current document only.
+
 ### Return value:
 
 - `inputRef`: A `ref` which needs to be attached to the input element to be
@@ -86,4 +91,3 @@ Hotkeys are a fundamental aspect of many applications, enhancing user efficiency
 and interactivity. The useHotKeys hook simplifies the implementation of these
 hotkeys by allowing you to specify the hotkey combinations in various formats,
 associated handlers, and configuration options.
-
