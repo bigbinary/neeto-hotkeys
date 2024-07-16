@@ -9,7 +9,7 @@ import {
   unBindHotKey,
 } from "src/utils";
 
-const useHotKeys = (hotkey, handler, userConfig) => {
+const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
   const ref = useRef(null);
   const convertedHotkey = convertHotkeyToUsersPlatform(hotkey);
   const config = mergeLeft(userConfig, DEFAULT_CONFIG);
@@ -26,6 +26,7 @@ const useHotKeys = (hotkey, handler, userConfig) => {
       hotkey: convertedHotkey,
       handler,
       ref,
+      externalDocument,
     });
 
     return () => {
