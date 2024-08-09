@@ -11,18 +11,20 @@ import {
 
 const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
   const ref = useRef(null);
-  const convertedHotkey = convertHotkeyToUsersPlatform(hotkey);
-  const config = mergeLeft(userConfig, DEFAULT_CONFIG);
-
-  if (!handler) {
-    throw new Error("You must provide a handler function to useHotKeys");
-  }
+  const memoizedConfig = useMemo(
+    () =>
+      mergeLeft(
+        { enabled: userConfig?.enabled, mode: userConfig?.mode },
+        DEFAULT_CONFIG
+      ),
+    [userConfig?.enabled, userConfig?.mode]
+  );
 
   useEffect(() => {
-    if (!config.enabled) return undefined;
+    if (!memoizedConfig.enabled) return undefined;
 
     const mousetrapInstance = bindHotKey({
-      mode: config.mode,
+      mode: memoizedConfig.mode,
       hotkey: convertedHotkey,
       handler,
       ref,
@@ -32,13 +34,13 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
     return () => {
       unBindHotKey({
         mousetrapInstance,
-        mode: config.mode,
+        mode: memoizedConfig.mode,
         hotkey: convertedHotkey,
       });
     };
-  }, [handler, config.mode, convertedHotkey, config]);
+  }, [handler, config.mode, convertedHotkey, memoizedConfig]);
 
-  return config.mode === MODES.scoped ? ref : null;
+  return memoizedConfig.mode === MODES.scoped ? ref : null;
 };
 
 export default useHotKeys;
