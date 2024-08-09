@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import { mergeLeft } from "ramda";
 
@@ -11,20 +11,27 @@ import {
 
 const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
   const ref = useRef(null);
-  const convertedHotkey = convertHotkeyToUsersPlatform(hotkey);
-  const config = mergeLeft(userConfig, DEFAULT_CONFIG);
+  const handlerRef = useRef(handler);
 
-  if (!handler) {
-    throw new Error("You must provide a handler function to useHotKeys");
-  }
+  handlerRef.current = handler;
+
+  const convertedHotkey = useMemo(
+    () => convertHotkeyToUsersPlatform(hotkey),
+    [hotkey]
+  );
+
+  const memoizedConfig = useMemo(
+    () => mergeLeft(userConfig, DEFAULT_CONFIG),
+    [userConfig?.enabled, userConfig?.mode, userConfig?.unbindOnUnmount]
+  );
 
   useEffect(() => {
-    if (!config.enabled) return undefined;
+    if (!memoizedConfig.enabled) return undefined;
 
     const mousetrapInstance = bindHotKey({
-      mode: config.mode,
+      mode: memoizedConfig.mode,
       hotkey: convertedHotkey,
-      handler,
+      handler: handlerRef.current,
       ref,
       externalDocument,
     });
@@ -32,13 +39,13 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
     return () => {
       unBindHotKey({
         mousetrapInstance,
-        mode: config.mode,
+        mode: memoizedConfig.mode,
         hotkey: convertedHotkey,
       });
     };
-  }, [handler, config.mode, convertedHotkey, config]);
+  }, [convertedHotkey, externalDocument, memoizedConfig]);
 
-  return config.mode === MODES.scoped ? ref : null;
+  return memoizedConfig.mode === MODES.scoped ? ref : null;
 };
 
 export default useHotKeys;
