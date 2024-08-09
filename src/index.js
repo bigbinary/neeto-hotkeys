@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import { mergeLeft } from "ramda";
 
@@ -14,6 +14,11 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
   const handlerRef = useRef(handler);
 
   handlerRef.current = handler;
+
+  const convertedHotkey = useMemo(
+    () => convertHotkeyToUsersPlatform(hotkey),
+    [hotkey]
+  );
 
   const memoizedConfig = useMemo(
     () =>
