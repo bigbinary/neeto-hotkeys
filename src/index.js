@@ -21,12 +21,8 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
   );
 
   const memoizedConfig = useMemo(
-    () =>
-      mergeLeft(
-        { enabled: userConfig?.enabled, mode: userConfig?.mode },
-        DEFAULT_CONFIG
-      ),
-    [userConfig?.enabled, userConfig?.mode]
+    () => mergeLeft(userConfig, DEFAULT_CONFIG),
+    [userConfig?.enabled, userConfig?.mode, userConfig?.unbindOnUnmount]
   );
 
   useEffect(() => {
