@@ -11,6 +11,10 @@ import {
 
 const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
   const ref = useRef(null);
+  const handlerRef = useRef(handler);
+
+  handlerRef.current = handler;
+
   const memoizedConfig = useMemo(
     () =>
       mergeLeft(
@@ -26,7 +30,7 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
     const mousetrapInstance = bindHotKey({
       mode: memoizedConfig.mode,
       hotkey: convertedHotkey,
-      handler,
+      handler: handlerRef.current,
       ref,
       externalDocument,
     });
@@ -38,7 +42,7 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
         hotkey: convertedHotkey,
       });
     };
-  }, [handler, config.mode, convertedHotkey, memoizedConfig]);
+  }, [convertedHotkey, externalDocument, memoizedConfig]);
 
   return memoizedConfig.mode === MODES.scoped ? ref : null;
 };
