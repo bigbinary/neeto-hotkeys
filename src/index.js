@@ -31,7 +31,7 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
     const mousetrapInstance = bindHotKey({
       mode: memoizedConfig.mode,
       hotkey: convertedHotkey,
-      handler: handlerRef.current,
+      handler: (...args) => handlerRef.current(...args),
       ref,
       externalDocument,
     });
