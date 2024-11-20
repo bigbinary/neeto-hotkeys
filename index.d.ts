@@ -2,6 +2,7 @@ type ConfigType = {
   mode?: "default" | "global" | "scoped";
   unbindOnUnmount?: boolean;
   enabled?: boolean;
+  document?: Document;
 };
 
 export default function useHotkeys(

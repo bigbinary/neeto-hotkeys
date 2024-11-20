@@ -31,13 +31,7 @@ export const convertHotkeyToUsersPlatform = hotkey => {
   return convertHotKeyToWindows(hotkey);
 };
 
-export const bindHotKey = ({
-  mode,
-  hotkey,
-  handler,
-  ref,
-  externalDocument,
-}) => {
+export const bindHotKey = ({ mode, hotkey, handler, ref, targetDocument }) => {
   let mousetrapInstance;
 
   switch (mode) {
@@ -45,13 +39,13 @@ export const bindHotKey = ({
       Mousetrap.bindGlobal(hotkey, handler);
       break;
     case MODES.scoped:
-      mousetrapInstance = Mousetrap(externalDocument ?? ref.current).bind(
+      mousetrapInstance = Mousetrap(targetDocument ?? ref.current).bind(
         hotkey,
         handler
       );
       break;
     default:
-      mousetrapInstance = Mousetrap(externalDocument ?? document).bind(
+      mousetrapInstance = Mousetrap(targetDocument ?? document).bind(
         hotkey,
         handler
       );

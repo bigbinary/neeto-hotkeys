@@ -8,6 +8,7 @@ export const DEFAULT_CONFIG = {
   mode: MODES.default,
   unbindOnUnmount: true,
   enabled: true,
+  document: undefined,
 };
 
 export const MAC_TO_WINDOWS_KEYS_MAP = {
