@@ -1,8 +1,10 @@
 # @bigbinary/neeto-hotkeys
 
-The `neeto-hotkeys` package provides the `useHotKeys` hook, a versatile utility for managing hotkeys in an application.
-This hook allows you to define specific hotkey combinations and associate them with corresponding handler functions.
-The associated handler is invoked upon pressing the configured hotkey(s), enabling you to execute actions in response to keyboard input.
+The `neeto-hotkeys` package provides the `useHotKeys` hook, a versatile utility
+for managing hotkeys in an application. This hook allows you to define specific
+hotkey combinations and associate them with corresponding handler functions. The
+associated handler is invoked upon pressing the configured hotkey(s), enabling
+you to execute actions in response to keyboard input.
 
 ## Installation
 
@@ -38,8 +40,9 @@ yarn add @bigbinary/neeto-hotkeys
   Handler will receive the original key `event`. This can be used to stop the
   default browser action like so `event.preventDefault()`.
 
-- `config`: A config object which has 3 properties `mode`, `unbindOnUnmount` &
-  `enabled`.
+- `config` (optional): A config object which has 3 properties `mode`,
+  `unbindOnUnmount` & `enabled`.
+
   1.  mode: The available values for mode are `default`, `global` & `scoped`.
       - default: It is the default mode. Handlers will only be called if the
         user is outside of a textarea, input, or select element.
@@ -55,8 +58,21 @@ yarn add @bigbinary/neeto-hotkeys
       value to `false`.
   3.  enabled: By default its value will be `true`. Setting this to `false` will
       not register the hotkey.
+  4.  externalDocument: This is an optional property. If you want to listen for
+      hotkeys on an external document (e.g., an iframe), pass the reference of
+      that document using the `externalDocument` property in the `config`
+      object. If you do not provide this property, the hook will listen for
+      hotkeys on the current document by default.
 
-- `externalDocument`: This is an optional argument. If you want to listen for hotkeys on an external document (e.g., an iframe), pass the reference of that document as the 4th argument for useHotKeys hook. If you do not provide this argument, the hook will listen for hotkeys on the current document by default.
+  - `dependencies`: The `useHotkeys` hook automatically memoizes the callback it
+    receives to avoid unnecessary re-renders. However, this behavior can cause
+    issues with stale state. To address this, hook accepts a dependencies array.
+    The general rule is to put every unstable reference used inside the callback
+    into the dependency array.
+
+  Note: If the third argument is an object, it is treated as the config and the
+  fourth argument will be the dependencies array. If no config is provided, the
+  dependencies array can be passed directly as the third argument.
 
 ### Return value:
 
@@ -65,8 +81,8 @@ yarn add @bigbinary/neeto-hotkeys
 
 ### Usage:
 
-Following illustrates the usage of `useHotKeys` hook in implementing shortcut for
-Sidebar opening.
+Following illustrates the usage of `useHotKeys` hook in implementing shortcut
+for Sidebar opening.
 
 ```jsx
 import useHotKeys from "@bigbinary/neeto-hotkeys";

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 
-import { mergeLeft } from "ramda";
+import { mergeLeft, type } from "ramda";
 
 import { DEFAULT_CONFIG, MODES } from "src/constants";
 import {
@@ -9,20 +9,37 @@ import {
   unBindHotKey,
 } from "src/utils";
 
-const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
+const useHotKeys = (
+  hotkey,
+  handler,
+  configOrDependencies,
+  dependencies = []
+) => {
   const ref = useRef(null);
   const handlerRef = useRef(handler);
 
   handlerRef.current = handler;
 
+  const isConfigObject = type(configOrDependencies) === "Object";
+  const config = isConfigObject ? configOrDependencies : {};
+  const deps =
+    !isConfigObject && Array.isArray(configOrDependencies)
+      ? configOrDependencies
+      : dependencies;
+
   const convertedHotkey = useMemo(
     () => convertHotkeyToUsersPlatform(hotkey),
-    [hotkey]
+    [hotkey, ...deps]
   );
 
   const memoizedConfig = useMemo(
-    () => mergeLeft(userConfig, DEFAULT_CONFIG),
-    [userConfig?.enabled, userConfig?.mode, userConfig?.unbindOnUnmount]
+    () => mergeLeft(config, DEFAULT_CONFIG),
+    [
+      config?.enabled,
+      config?.mode,
+      config?.unbindOnUnmount,
+      config?.externalDocument,
+    ]
   );
 
   useEffect(() => {
@@ -33,7 +50,7 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
       hotkey: convertedHotkey,
       handler: handlerRef.current,
       ref,
-      externalDocument,
+      externalDocument: memoizedConfig.externalDocument,
     });
 
     return () => {
@@ -43,7 +60,7 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
         hotkey: convertedHotkey,
       });
     };
-  }, [convertedHotkey, externalDocument, memoizedConfig]);
+  }, [convertedHotkey, memoizedConfig]);
 
   return memoizedConfig.mode === MODES.scoped ? ref : null;
 };
