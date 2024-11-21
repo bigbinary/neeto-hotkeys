@@ -9,7 +9,7 @@ import {
   unBindHotKey,
 } from "src/utils";
 
-const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
+const useHotKeys = (hotkey, handler, config) => {
   const ref = useRef(null);
   const handlerRef = useRef(handler);
 
@@ -21,8 +21,8 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
   );
 
   const memoizedConfig = useMemo(
-    () => mergeLeft(userConfig, DEFAULT_CONFIG),
-    [userConfig?.enabled, userConfig?.mode, userConfig?.unbindOnUnmount]
+    () => mergeLeft(config, DEFAULT_CONFIG),
+    [config?.enabled, config?.mode, config?.unbindOnUnmount, config?.document]
   );
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
       hotkey: convertedHotkey,
       handler: (...args) => handlerRef.current(...args),
       ref,
-      externalDocument,
+      targetDocument: memoizedConfig.document,
     });
 
     return () => {
@@ -43,7 +43,7 @@ const useHotKeys = (hotkey, handler, userConfig, externalDocument) => {
         hotkey: convertedHotkey,
       });
     };
-  }, [convertedHotkey, externalDocument, memoizedConfig]);
+  }, [convertedHotkey, memoizedConfig]);
 
   return memoizedConfig.mode === MODES.scoped ? ref : null;
 };
